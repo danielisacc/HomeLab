@@ -15,3 +15,7 @@ Active Directory(AD), often called Active Directory Domain Services(AD DS) can b
 ### Why HyperV
 While researching how to create and run an AD VM I was unable to find any videos that walk through the process of using Hyper-V. This is likely due to the fact that Hyper-V requires the Pro version of whatever Windows OS is running, meaning it is less accessible, meanwhile Oracles VirtualBox is free to use and most users can run it. However, I already have Windows 10 Pro, so I can use it and it is significantly better for windows when compared to VirtualBox. Since Hyper-V is native to Windows, it requests access to resources directly from the motherboard rather than VMware or VirtualBox, which are external software that request resource management from the OS currently running on the workstation. This means that Hyper-V has a smoother experience with lower CPU and memory use than other VM's.
 
+### Enable HyperV Manager
+As long as you have a Windows version that is Pro, it is rather easy to enable the Hyper-V Manager.
+1. The first step is to select the Windows Start menu and type "Turn Windows features On/Off" and open the accordingly named program.
+2. The Features window opens where you will check the "Hyper-V" and "Windows Hypervisor Platform" checkboxes as seen in the Image below
