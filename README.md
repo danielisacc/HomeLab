@@ -2,7 +2,7 @@
 ## Summary
 This guide covers how to create an Active Directory (AD) within a Hyper-V VM to gain experience working with AD's and servers in general. This project is a deep dive into Active Directory and VM's and is suited for people who are rather new to AD, but have some experience working with computers and as such, this document is rather verbose and descriptive. In order to make this experience more pleasant for everyone, I included a table of contents with links to allow anyone viewing to search for information that is valuable to them. This project covers the content regarding...
 - [Enabling Hyper-V Manager on <b>Windows 10 Pro</b>](#Preparing-Your-VM)
-- [Creating and Configuring a Windows 2019 Server Virtual Machine (VM)]()
+- [Creating and Configuring a Windows 2019 Server Virtual Machine (VM)](#Creating-Your-VM)
 - [Deploying and Configuring an Active Directory (AD)]()
 - [Deploying and Configuring RAS/NAT onto the AD server]()
 - [Deploying and Configuring DHCP onto the AD Server]()
@@ -41,4 +41,7 @@ Windows however, is not free to use like Linux and due to this, using Windows OS
 1. The free way was mentioned before, which is using your college or high school, which often times provides either an Azure account for their students for free, or offer Windows Education to students through their IT team. This is not the fastest or easiest method to get Windows liscense keys, but it is by far the cheapest(Again FREE).
 2. The next cheapest method is purchasing a liscense from a Windows Liscense seller. This is legal, but also can be dangerous if you aren't careful which sites you visit. You can get Windows 10 Pro liscenses as low as $6 using this method. To stay safe, you should ensure that any card transactions take place over an HTTPS:// website. This means not just checking that the home page is https, but the actual webpage the card information is entered into. Although unsafe in some regaurds, this is one of the easiest methods to get a liscense and by far cheaper than purchasing it from Microsoft directly.
 3. If you already have a Windows liscence for an old PC, you can use that if is not in use. If the old liscense is Windows 7, you can easily use it for this project, but some of the steps may not be the same. If you have an old liscense, but it is not Pro, you can purchase an upgrade from microsoft, which is much cheaper than purchasing the key outright, but is still more expensive than buying it from a third party.
+
 Whatever method is used, it is essential you get a liscense key in order to continue with this project.
+## Creating your VM
+
