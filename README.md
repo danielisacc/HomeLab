@@ -101,13 +101,27 @@ Now that the VM is fully set up, it is ready to be started. To start the VM, sel
 7. Windows begins the final installation. **DON'T** click anything until the installation finishes, especially if prompted upon the VM restarting.
 8. Customize Settings - Create a secure password you can remember, eg.(8 char, 1 Uppercase, 1 Number, 1 Symbol...) and click Finish. The VM is now running with Windows Server 2019!
 ### Setting Up Static IPv4
+#### Static IP
 Now that the server is installed and running, we need to configure the IP address of the Internal Network. The reason why is that an IP address is dynamic by default, meaning that it can change for several reasons, but since we want all computers on the network to be able to access the internal network, the IP address can't change. This is called assigning a static IP address. The first step is opening the network settings by clicking on the connections button at the bottom right corner in the task bar, then selecting the network that you are connected to. It should just be called *Network*.
 1. In the **Settings** the **Ethernet** pane automatically opens. from within this pane select the *Change adapter settings* link. This will open the **Network Connections** window.
 2. From this window there should be two connections with ambiguously named **Ethernet 1 & 2** connections. We need to rename the connections for later and for simplicity. To establish which adapter is the internal and external is rather easy.
-    -Since the external adapter is actively connected to the internet, it automatically is assigned as the **Network**. This means that under the name **Ethernet**, one adapter is assigned to **Network** and another is assigned **Unidentified Network**.
+    - Since the external adapter is actively connected to the internet, it automatically is assigned as the **Network**. This means that under the name **Ethernet**, one adapter is assigned to **Network** and another is assigned **Unidentified Network**.
 3. Rename the adapter with **Network** under it's name "External" by right clicking it and selecting rename. Rename the other one "Internal".
-4. 
-
+4. Now that you know which adapter is the internal one, right click **Internal** and select *Properties*.
+5. The **Internal Prioperties** window appears, where you will select *Internet Protocol Version 4 (TCP/IPv4)* and select the *Properties* button.
+6. This opens the **IPv4 Properties** window where we will configure the static address. First select *Use the Following Address* and enter the fields as listed below...
+    1. IP Address: 172.16.0.1
+    2. Subnet Mask: 255.255.255.0
+    3. Default Gateway: (Empty)
+7. Under **Use the following DNS server address**
+    1. Preffered DNS Server - 127.0.0.1
+8. What we just did was assign the Server the Internal IPv4 Address 172.16.0.1, which we will use a lot throughout this project, so make sure to reference regularly. We then left the Default Gateway empty, since this server will become the defualt gateway once everything is set up, meaning the IP address 172.16.0.1 will become the Default Gateway. We lastly set the DNS server to ourselves, meaning that we will direct traffic to the appropriate servers ourselves. This is important as although this puts extra work on the server, it also allows us to secure the network much better and help prevent DNS Spoofing.
+9. Click Okay to close and save the changes.
+#### Changing Server Name
+This step is not necessary, but it does clarify everything just a little bit and makes things appear nicer and clear. Changing the name is easy and fast. To start right click the windows start button and select *System* from the menu. 
+1. This opens the **Settings** window with the **About** pane opened by default. Scroll down until a button labeled *Rename this PC* appears and click it.
+2. In the window that pops up, type something memorable. I changed the name to DC1. Click Next. The system will need to restart.
+3. After the reboot, if you have not done so already, I recommend saving a checkpoint and naming it "Server Established".
 
 ## Configuring an Active Directory
 []() | []() | []() | []() | 
