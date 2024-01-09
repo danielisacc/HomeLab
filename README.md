@@ -74,6 +74,17 @@ Creating a VM in Hyper-V is very easy. To start select *New* from the **Actions*
 
 ![](/images/image37.png)
 ### Virtual Switch Manager
+#### What is a Virtual Switch
+A virtual switch emulates a network adapter within a virtual enviornment. These adapters are used to create a network between the greater internet, the host, and other VM's on the host. There are three different types of virtual switches...
+- External - these switches allow the VM to connect to the internet through the host's NAT card.
+- Internal - These switches allow the VM to only connect to the host PC and other VM's on the host through a network, similar to a corperates internal network.
+- Private - These switches are similar to the Internal switch, except the host is unable to connect to the network, instead only VM's within the host can connect.
+#### Create a Virtual Switch
+The Virtual Switch Manager is a user interface that allows you to create, delete and configure virtual switches that can then be connected to VM's through the VM's hardware settings. For the AD we are creating, the VM needs to have an internal switch so users can connect to the AD and an external switch to connect those users to the internet. In the VM Creation Wizard we already added the default external switch, but now we need to create and attack the internal switch to the VM. The manager is opened through the **Actions** pane by selecting the *Virtual Switch Manager...* button. This opens the manager.
+1. The manager automatically opens to the **Create Virtual Switch** pane where you can create a virtual Switch. Select *Internal* and click *Create Virtual Switch*
+2. This opens the **Virtual Switch Properties** pane, where you can configure the switch. I changed the name to Internal for simplification, but you can name it anything you can recognize later. Click ok to create the switch.
+3. The switch should appear on the left in the **Virtual Switches** pane.
+#### Installing the Switch
 
 
 ### Deploying and Installing Windows Server
