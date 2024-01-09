@@ -118,13 +118,30 @@ Now that the server is installed and running, we need to configure the IP addres
 8. What we just did was assign the Server the Internal IPv4 Address 172.16.0.1, which we will use a lot throughout this project, so make sure to reference regularly. We then left the Default Gateway empty, since this server will become the defualt gateway once everything is set up, meaning the IP address 172.16.0.1 will become the Default Gateway. We lastly set the DNS server to ourselves, meaning that we will direct traffic to the appropriate servers ourselves. This is important as although this puts extra work on the server, it also allows us to secure the network much better and help prevent DNS Spoofing.
 9. Click Okay to close and save the changes.
 #### Changing Server Name
-This step is not necessary, but it does clarify everything just a little bit and makes things appear nicer and clear. Changing the name is easy and fast. To start right click the windows start button and select *System* from the menu. 
+This step is not necessary, but it does clarify everything just a little bit and makes things appear nicer and clear. Changing the name is easy and fast. To start, right click the windows start button and select *System* from the menu. 
 1. This opens the **Settings** window with the **About** pane opened by default. Scroll down until a button labeled *Rename this PC* appears and click it.
 2. In the window that pops up, type something memorable. I changed the name to DC1. Click Next. The system will need to restart.
 3. After the reboot, if you have not done so already, I recommend saving a checkpoint and naming it "Server Established".
 
 ## Configuring an Active Directory
-[]() | []() | []() | []() | 
+[The Server Manager](#The-Server-Manager) | [Deploying AD](#Deploying-AD) | [Post Deployment](#Post-Deployment) | [Adding an Admin](#Adding-an-Admin)
+### The Server Manager
+Upon logging into the server, the Server Manager automatically opens. All of the tools and features of all roles and services that are deployed onto the server are accessibly through the manager. This means I will be refering to the manager often, so it's best you get aquainted with it.
+- On the left pane of the manager is the **Directory** pane where you can access the **Dashboard** among any of the roles and server groups that we establish through this process.
+- In the middle are two panes
+    - The top pane is the **Welcome to server manager** pane, where you will quickly be able to add new roles and features in the **Configure this local server** quick select frame.
+    - The bottom pane is the **Roles and Server Groups** This is similar to the **Directory** pane, except it gives additional information and more quick access options. It provides role and server states as well using green and red coloring. If the color of the banner of a role is green, it means that the server is running well, but if the color is red, then the server is recieving warnings or errors on this role or group. It is normal for the server groups during this project to display red on **1 Services**
+    - The task bar at the top of the screen is where all tools and resources are found for managing the server and it's roles. The **Flag** is where additional steps for setups will appear such as Post Deployment steps for the AD. The **Manage** tab is where you can manage groups and group policies among other things. The **Tools** tab will be used regularly throughout this process and contains all the tools and wizards to complete tasks.
+
+The names of these panes and buttons will be references regualry throughout this project, so make sure to revisit if you can't find a button I reference on the server manager.
+### Deploying AD
+
+
+### Post Deployment
+
+
+### Adding an Admin
+
 
 ## Deploying and Configuring RAS
 []() | []() | []() | []() | 
