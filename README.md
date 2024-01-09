@@ -63,9 +63,16 @@ To open the Hyper-V Manager, press the Windows Key and type "Hyper-V" and select
 #### Creating your VM
 Creating a VM in Hyper-V is very easy. To start select *New* from the **Actions** pane and select *Virtual Machine...*, where the **Virtual Machine Creation Wizard** opens.
 1. Before You Begin - Click Next
-2. Specify Name and Location - I entered *DC1* in the Name field, but you can enter whatever you want. Just make sure to name it something you recognize.
-    1. I did not specify a location for the VM to be saved in, but if you can change the location if you would like.
-3. 
+2. Specify Name and Location - I entered *DC1* in the Name field, but you can enter whatever you want. Just make sure to name it something you recognize. Click Next
+    1. I did not specify a location for the VM to be saved in, but if you can change the location if you would like. Click Next
+3. Specific Generation - I highly recommend Generation 2 if you have a 64 bit PC, as it is newer, provides better features and an overall user experience. Click Next
+4. Assign Memory - I used 2048MB of memory, but you can use anything more that that. Using more will provide a smoother experience, but for most operations, it is unnecessary. Click Next
+5. Configure Network - Hyper-V automatically creates an External Network called *Default Switch*, select this, but we will create another switch later. Click Next
+6. Connect Virtual Hard Disk - I only changed the size field under *Create a Virtual Hard Disk* to 50GB. This is dynamically used, meaning not all 50GB will be used by the VM, only up to. Click Next
+7. Installation Options - Select the radial option *Install an operating system from a bootable CD/DVD-ROM*, then select the radial option *Image File(ISO)* and click *Browse..*. From there select the Windows 2019 Server ISO you downloaded and click Open. Click Next
+8. Summary - Review the summary screen and ensure it matches the image below, then click Finish to Create the VM
+
+![](/images/image.png)
 ### Virtual Switch Manager
 
 
