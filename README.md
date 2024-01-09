@@ -4,7 +4,7 @@ This guide covers how to create an Active Directory (AD) within a Hyper-V VM to 
 - [Enabling Hyper-V Manager on <b>Windows 10 Pro</b>](#Preparing-Your-VM)
 - [Creating and Configuring a Windows 2019 Server Virtual Machine (VM)](#Creating-Your-VM)
 - [Deploying and Configuring an Active Directory (AD)](#Configuring-an-Active-Direcotory)
-- [Deploying and Configuring RAS/NAT onto the AD server](#Deploying-and-Configuring-RAS/NAS)
+- [Deploying and Configuring RAS/NAT onto the AD server](#Deploying-and-Configuring-RAS)
 - [Deploying and Configuring DHCP onto the AD Server](#Deploying-and-Configuring-DHCP)
 - [Creating, troubleshooting, and running PowerShell script for User Creation](#PowerShell-Scripting)
 - [Deploying and connecting a <b>Windows 10 Education</b> VM to the VM Network](#Endpoint-Device-VM-Deployment)
@@ -48,7 +48,7 @@ Windows however, is not free to use like Linux and due to this, using Windows OS
 Whatever method is used, it is essential you get a liscense key in order to continue with this project.
 
 ## Creating your VM
-[VM Wizard](#VM-Wizard) | [Virtual Switch Manager](#Virtual-Switch-Manager) | [Deploying and Installing Windows Server](#Deploying-and-Installing-Windows-Server)
+[VM Wizard](#VM-Wizard) | [Virtual Switch Manager](#Virtual-Switch-Manager) | [Deploying and Installing Windows Server](#Deploying-and-Installing-Windows-Server)![] | [Setting Up Static IPv4](#Setting-Up-Static-IPv4)
 
 ### VM Wizard
 #### Hyper-V Manager
@@ -91,13 +91,22 @@ Now that the Switch has been created, we can install it into the DC1 VM and late
 3. The Internal adapter should appear in the **Hardware** pane under **Network Adapter**. Click Okay to close the settings window.
 
 ### Deploying and Installing Windows Server
-#### Booting up
+Now that the VM is fully set up, it is ready to be started. To start the VM, select the VM from within the **Virtual Machines** pane. The **"DC1"** pane should open under the **Actions** pane where you can select *Start*, which will start the VM, then select *Connect* to open the VM in a seperate window. The VM will open requesting you to press any button. This is the only time you should press anything when prompted on this screen as this begins the Windows installation. Press any button.
+1. Languages - The **Windows Setup** window appears. Click Next
+2. Install - Select *Install Now* and wait for it to install.
+3. Select the OS you want to Install - After the install completes, you are prompted to select which os to install. Select *Windows Server 2019 Standard Evaluation (Desktop Experience)*. This edition comes with the standard features I need and uses the Desktop Experience which is the Graphical User Interface (GUI). Click Next
+4. Terms and Conditions - Accept the Terms and Conditions. Click Next
+5. Install Options - Select *Custom Install* since there isn't an existing OS to upgrade.
+6. Installation Drive - Click Next, since there is only one drive installed on the VM.
+7. Windows begins the final installation. **DON'T** click anything until the installation finishes, especially if prompted upon the VM restarting.
+8. Customize Settings - Create a secure password you can remember, eg.(8 char, 1 Uppercase, 1 Number, 1 Symbol...) and click Finish. The VM is now running with Windows Server 2019!
+
 
 
 ## Configuring an Active Directory
 []() | []() | []() | []() | 
 
-## Deploying and Configuring RAS/NAS
+## Deploying and Configuring RAS
 []() | []() | []() | []() | 
 
 ## Deploying and Configuring DHCP
