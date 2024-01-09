@@ -83,11 +83,15 @@ A virtual switch emulates a network adapter within a virtual enviornment. These 
 The Virtual Switch Manager is a user interface that allows you to create, delete and configure virtual switches that can then be connected to VM's through the VM's hardware settings. For the AD we are creating, the VM needs to have an internal switch so users can connect to the AD and an external switch to connect those users to the internet. In the VM Creation Wizard we already added the default external switch, but now we need to create and attack the internal switch to the VM. The manager is opened through the **Actions** pane by selecting the *Virtual Switch Manager...* button. This opens the manager.
 1. The manager automatically opens to the **Create Virtual Switch** pane where you can create a virtual Switch. Select *Internal* and click *Create Virtual Switch*
 2. This opens the **Virtual Switch Properties** pane, where you can configure the switch. I changed the name to Internal for simplification, but you can name it anything you can recognize later. Click ok to create the switch.
-3. The switch should appear on the left in the **Virtual Switches** pane.
+3. The switch should appear on the left in the **Virtual Switches** pane. You can close the manager.
 #### Installing the Switch
-
+Now that the Switch has been created, we can install it into the DC1 VM and later onto the CLIENT1 VM. This process is rather easy and begins with right clicking the VM name displayed in the **Virtual Machines** pane and selecting *settings*.
+1. It automatically opens to the **Add Hardware** pane. Within this pane select *Network Adapter* and click *Add*.
+2. This opens the **Network Adapter** pane. Within this pane select *Internal* or whatever you named your adapter from the **Virtual Switch** dropdown options. Click Apply
+3. The Internal adapter should appear in the **Hardware** pane under **Network Adapter**. Click Okay to close the settings window.
 
 ### Deploying and Installing Windows Server
+#### Booting up
 
 
 ## Configuring an Active Directory
