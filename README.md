@@ -11,7 +11,10 @@ This guide covers how to create an Active Directory (AD) within a Hyper-V VM to 
 ### What is Active Directory
 Active Directory(AD), often called Active Directory Domain Services(AD DS) can be a rather broad topic due to the flexibility of the services it provides. At it's core an AD stores data objects. This is means it doesn't just store files like a file system does, instead storing "Objects" within it's structure. These objects include Users, Computers, Groups and Group Policies. In other words an AD is where information and rules regaurding Users and the Devices within a Network are stored, managed, and enforced. This is a simplified explanation of AD since the "Domain Services" of AD DC includes much more than storing data as the Server that runs AD often times has more responsibilies outside of storing objects. This includes RAS/NAT which is a service that allows users within the AD's internal Network to connect to the greater internet, while the DHCP service allows the AD to act as a network "Gateway" similar to a router, assigning IP addresses to users within the network. With both of these services deployed on an AD the users within the internal network are never connected to the external internet, instead using the AD as a barrier. This is how Organizations use AD and is why I set mine up this way as well.
 ## Preparing Your VM
-[Why HyperV](#Why-HyperV) | [Enable HyperV Manager](#Enable-HyperV-Manager) | [Installing Windows ISOs](#Installing-Windows-ISOs) | [Windows Liscenses](#Windows-Liscenses)
+[What is a VM](#What-is-a-VM) | [Why HyperV](#Why-HyperV) | [Enable HyperV Manager](#Enable-HyperV-Manager) | [Installing Windows ISOs](#Installing-Windows-ISOs) | [Windows Liscenses](#Windows-Liscenses)
+### What is a VM
+A Virtual Machine (VM) is an enviornment that uses its "Host" computers resouces to create a virtual computer(s) that exists within the host. This allows developers to effectively run multiple computers with different operating systems from within one computer. This has many uses to developers such as testing malware without placing their own network or devices at risk of infection or in our case configuring and running multiple devices without having to purchase the hardware to run those devices. We use a Hypervisor platform, which is a software that allows us to create, configure and interact with VM's. In our case, our Hypervisor platform is Hyper-V.
+
 ### Why HyperV
 While researching how to create and run an AD VM I was unable to find any videos that walk through the process of using Hyper-V. This is likely due to the fact that Hyper-V requires the Pro version of whatever Windows OS is running, meaning it is less accessible, meanwhile Oracles VirtualBox is free to use and most users can run it. However, I already have Windows 10 Pro, so I can use it and it is significantly better for windows when compared to VirtualBox. Since Hyper-V is native to Windows, it requests access to resources directly from the motherboard rather than VMware or VirtualBox, which are external software that request resource management from the OS currently running on the workstation. This means that Hyper-V has a smoother experience with lower CPU and memory use than other VM's.
 
@@ -43,5 +46,15 @@ Windows however, is not free to use like Linux and due to this, using Windows OS
 3. If you already have a Windows liscence for an old PC, you can use that if is not in use. If the old liscense is Windows 7, you can easily use it for this project, but some of the steps may not be the same. If you have an old liscense, but it is not Pro, you can purchase an upgrade from microsoft, which is much cheaper than purchasing the key outright, but is still more expensive than buying it from a third party.
 
 Whatever method is used, it is essential you get a liscense key in order to continue with this project.
-## Creating your VM
 
+## Creating your VM
+[VM Wizard](#VM-Wizard) | [Virtual Switch Manager](#Virtual-Switch-Manager) | [Deploying and Installing Windows Server](#Deploying-and-Installing-Windows-Server)
+
+### VM Wizard
+
+
+
+### Virtual Switch Manager
+
+
+### Deploying and Installing Windows Server
