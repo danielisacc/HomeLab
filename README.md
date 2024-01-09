@@ -48,7 +48,7 @@ Windows however, is not free to use like Linux and due to this, using Windows OS
 Whatever method is used, it is essential you get a liscense key in order to continue with this project.
 
 ## Creating your VM
-[VM Wizard](#VM-Wizard) | [Virtual Switch Manager](#Virtual-Switch-Manager) | [Deploying and Installing Windows Server](#Deploying-and-Installing-Windows-Server)![] | [Setting Up Static IPv4](#Setting-Up-Static-IPv4)
+[VM Wizard](#VM-Wizard) | [Virtual Switch Manager](#Virtual-Switch-Manager) | [Deploying and Installing Windows Server](#Deploying-and-Installing-Windows-Server) | [Setting Up Static IPv4](#Setting-Up-Static-IPv4)
 
 ### VM Wizard
 #### Hyper-V Manager
@@ -100,6 +100,7 @@ Now that the VM is fully set up, it is ready to be started. To start the VM, sel
 6. Installation Drive - Click Next, since there is only one drive installed on the VM.
 7. Windows begins the final installation. **DON'T** click anything until the installation finishes, especially if prompted upon the VM restarting.
 8. Customize Settings - Create a secure password you can remember, eg.(8 char, 1 Uppercase, 1 Number, 1 Symbol...) and click Finish. The VM is now running with Windows Server 2019!
+### Setting Up Static IPv4
 
 
 
