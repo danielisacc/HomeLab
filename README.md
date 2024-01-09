@@ -51,7 +51,15 @@ Whatever method is used, it is essential you get a liscense key in order to cont
 [VM Wizard](#VM-Wizard) | [Virtual Switch Manager](#Virtual-Switch-Manager) | [Deploying and Installing Windows Server](#Deploying-and-Installing-Windows-Server)
 
 ### VM Wizard
-
+#### Hyper-V Manager
+To open the Hyper-V Manager, press the Windows Key and type "Hyper-V" and select "Hyper-V Manager". Once the Manager is open there are 5 panes visible.
+- The pane on the left is the **Console-Tree** and will not be used in this project, since I only have one host device.
+- There are three panes in the middle
+  - The top pane is the **Virtual Machines** pane and this is where you can access your VM's
+  - The middle pane is the **Checkpoints** pane and this is where you can access previous VM states if a critical failure of the VM occures, this is how you can go back to a previous state when you know it worked.
+  - the bottom pane is the **Details** pane which gives basic details regaurding the VM such as it's creation date and other notes
+- The right pane is the **Actions** pane and this is where you can create or import VM's, access the Virtual Switch Manager and preform other actions on the Hypervisor platform, not specifically to any particular VM.
+- There is an additional pane that appears when you select a VM that takes the name of the VM selected. This pane allows you to control the VM such as starting, connecting and stopping the VM.
 
 ### Virtual Switch Manager
 
