@@ -60,7 +60,12 @@ To open the Hyper-V Manager, press the Windows Key and type "Hyper-V" and select
   - the bottom pane is the **Details** pane which gives basic details regaurding the VM such as it's creation date and other notes
 - The right pane is the **Actions** pane and this is where you can create or import VM's, access the Virtual Switch Manager and preform other actions on the Hypervisor platform, not specifically to any particular VM.
 - There is an additional pane that appears when you select a VM that takes the name of the VM selected. This pane allows you to control the VM such as starting, connecting and stopping the VM.
-
+#### Creating your VM
+Creating a VM in Hyper-V is very easy. To start select *New* from the **Actions** pane and select *Virtual Machine...*, where the **Virtual Machine Creation Wizard** opens.
+1. Before You Begin - Click Next
+2. Specify Name and Location - I entered *DC1* in the Name field, but you can enter whatever you want. Just make sure to name it something you recognize.
+    1. I did not specify a location for the VM to be saved in, but if you can change the location if you would like.
+3. 
 ### Virtual Switch Manager
 
 
