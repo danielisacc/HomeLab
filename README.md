@@ -70,9 +70,9 @@ Creating a VM in Hyper-V is very easy. To start select *New* from the **Actions*
 5. Configure Network - Hyper-V automatically creates an External Network called *Default Switch*, select this, but we will create another switch later. Click Next
 6. Connect Virtual Hard Disk - I only changed the size field under *Create a Virtual Hard Disk* to 50GB. This is dynamically used, meaning not all 50GB will be used by the VM, only up to. Click Next
 7. Installation Options - Select the radial option *Install an operating system from a bootable CD/DVD-ROM*, then select the radial option *Image File(ISO)* and click *Browse..*. From there select the Windows 2019 Server ISO you downloaded and click Open. Click Next
-8. Summary - Review the summary screen and ensure it matches the image below, then click Finish to Create the VM
+8. Summary - Review the summary screen and ensure it is simialar to the image below, then click Finish to Create the VM
 
-![](/images/image.png)
+![](/images/image37.png)
 ### Virtual Switch Manager
 
 
