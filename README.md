@@ -3,7 +3,7 @@
 This guide covers how to create an Active Directory (AD) within a Hyper-V VM to gain experience working with AD's and servers in general. This project is a deep dive into Active Directory and VM's and is suited for people who are rather new to AD, but have some experience working with computers and as such, this document is rather verbose and descriptive. In order to make this experience more pleasant for everyone, I included a table of contents with links to allow anyone viewing to search for information that is valuable to them. This project covers the content regarding...
 - [Enabling Hyper-V Manager on <b>Windows 10 Pro</b>](#Preparing-Your-VM)
 - [Creating and Configuring a Windows 2019 Server Virtual Machine (VM)](#Creating-Your-VM)
-- [Deploying and Configuring an Active Directory (AD)](#Configuring-an-Active-Direcotory)
+- [Deploying and Configuring an Active Directory (AD)](#Configuring-an-Active-Directory)
 - [Deploying and Configuring RAS/NAT onto the AD server](#Deploying-and-Configuring-RAS)
 - [Deploying and Configuring DHCP onto the AD Server](#Deploying-and-Configuring-DHCP)
 - [Creating, troubleshooting, and running PowerShell script for User Creation](#PowerShell-Scripting)
@@ -135,7 +135,7 @@ Upon logging into the server, the Server Manager automatically opens. All of the
 
 The names of these panes and buttons will be references regualry throughout this project, so make sure to revisit if you can't find a button I reference on the server manager.
 
-#### Deployment
+#### Deploying AD
 Now that you are aquanted with the Server Manager, we can begin the installation and deployment of AD. To start select *Add Roles and Features* from **Configure this local server**. This will open the **Add Features and Roles Wizard**
 1. Before You Begin - select *Skip this page by default*, then Click Next
 2. Installation Type - Click Next
@@ -148,14 +148,35 @@ Now that you are aquanted with the Server Manager, we can begin the installation
 9. Confirmation - Ensure that your configuration matches the Image below, then Click Install
 
 ![](/images/image22.png)
-### Deploying AD
 
 
 ### Post Deployment
-
+Once the AD deployment is finished there are still post deployment configuration steps to follow. Close the wizard and open Server Manager if it is not already. 
+1. Select the *Flag* in the toolbar, then select *Post Deployment Configuration*. The **AD DS Wizard** opens
+2. Deployment Configuration - Select *Add New Forest*, then type in your domain name. I chose "mydomain.com". We chose to add a new forest since there isn't an existing one we are going to connect to or another domain on our network to connect to, since this will be the acting gateway AD. Click Next
+3. Domain Controller Options - For the forest and domain functional levels, ensure the most up to date version is selected. In my case it was Windows Server 2016. Type in a secure password for DSRM. Click Next
+4. DNS Options - Click Next
+5. Additional Options - After the name automatically loads, Click Next
+6. Paths - Click Next
+7. Review Options - Click Next
+8. Prerequisits Check - After you pass the check, Click Install. It's Okay to get warning messages, as long as it says at the top with a green check mark you passed, you should be good to go. After the Install, you should restart the server.
 
 ### Adding an Admin
+Although it is not technically required to create an administrative account, it is incredibly important for security purposes that there is an account assigned to every user, especially administrators. This ensures accountability for users as logs will indicate specific users rather than a vague “Administrator” account. This also means that all admins can have limitations set on their account for various reasons such as training. The “Administrator” account should never be used by anyone as soon as the Active Directory is installed.
 
+Adding an Administrative account is an easy process. Open tools in the tool bar in the **Server Manager** and select *Active Directory Users and Computers*. This opens the **Active Directory Users and Computers** window. From within this window, we are going to create some organization before adding any users.
+#### Organizational Units
+As mentioned before, an Active directory is similar to a file system, but they aren't the same. In a file system, files are stores in folders to organize storage, but an AD's purpose in this case is not to store files, instead storing objects and these *Objects* can't be stored in a folder, since they aren't files in the traditional sense. Instead these objects are stored in an **Organizational Unit (OU)**. Before creating any Users, Computers, Groups, or Group policies, it is necessary that we create a structure for these objects to keep track of them and often in buisness, for others to find something without too much hastle. A great example of this is a desktop that is bursting with files, images, videos, folders, and the kitchen sink. Whether it's you, your friend, or someone's PC you've worked on, we all have seen this desktop. The users of the PC, don't have any issues with this storage process, but I would like to see anyone else other than the user themselves try to find anything on that desktop they need. They can't right? It's the same for OU's, but way more important, because this isn't one user's computer. This is a server that thousands of people access with likely a team of 10-100 admins who will need to find objects inside this system. Luckily, if we start organizing from the start, it is much easier to keep it organized.
+
+#### Create an OU
+To create an OU is simple, since it has similar directions as creating a folder in the file explorer. 
+1. Right click either on the folder/OU you want to add the OU into or on the white space in the right pane
+2. Hover over the *New* button, which opens a dropdown menu.
+3. Select *Organizational Unit (OU)*. An OU window pops up asking for a name.
+4. Type in the name for the OU and Click done. Keep in mind that the check box under the name will prevent you from deleting this OU without advanced features on.
+
+The specific OU tree design follows a standard, so that other who create OU's know how to name them and place them. First, you need to create an OU with the name of your domain within you domain. Although this is not necessary, it is the standard for most companies and allows admins to have more control over the OU's. Create OU's with the design below.
+![](/images/image67.png)
 
 ## Deploying and Configuring RAS
 []() | []() | []() | []() | 
