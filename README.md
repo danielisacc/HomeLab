@@ -134,6 +134,20 @@ Upon logging into the server, the Server Manager automatically opens. All of the
 - The task bar at the top of the screen is where all tools and resources are found for managing the server and it's roles. The **Flag** is where additional steps for setups will appear such as Post Deployment steps for the AD. The **Manage** tab is where you can manage groups and group policies among other things. The **Tools** tab will be used regularly throughout this process and contains all the tools and wizards to complete tasks.
 
 The names of these panes and buttons will be references regualry throughout this project, so make sure to revisit if you can't find a button I reference on the server manager.
+
+#### Deployment
+Now that you are aquanted with the Server Manager, we can begin the installation and deployment of AD. To start select *Add Roles and Features* from **Configure this local server**. This will open the **Add Features and Roles Wizard**
+1. Before You Begin - select *Skip this page by default*, then Click Next
+2. Installation Type - Click Next
+3. Server Selection - Click Next
+4. Server Roles - Check the *Active Directory Domain Services* check box
+5. Add Roles an Features Pop Up- Click *Add Features*
+6. Server Roles - Click Next
+7. Features - We added this earlier with the **Add roles and features* pop-up window, so Click Next
+8. AD DS - Click Next
+9. Confirmation - Ensure that your configuration matches the Image below, then Click Install
+
+![](/images/image22.png)
 ### Deploying AD
 
 
