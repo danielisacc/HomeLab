@@ -175,8 +175,23 @@ To create an OU is simple, since it has similar directions as creating a folder 
 3. Select *Organizational Unit (OU)*. An OU window pops up asking for a name.
 4. Type in the name for the OU and Click done. Keep in mind that the check box under the name will prevent you from deleting this OU without advanced features on.
 
-The specific OU tree design follows a standard, so that other who create OU's know how to name them and place them. First, you need to create an OU with the name of your domain within you domain. Although this is not necessary, it is the standard for most companies and allows admins to have more control over the OU's. Create OU's with the design below.
+The specific OU tree design follows a standard, so that other who create OU's know how to name them and place them. First, you need to create an OU with the name of your domain within you domain. Although this is not necessary, it is the standard for most companies and allows admins to have more control over the OU's. Create OU's with the design below. We will add more OU's to this later in the project, but this is all we need for now.
 ![](/images/image67.png)
+
+#### User Creation
+Before making an admin account, we first need to make the account, then give it admin access. Open the **_ADMINS** OU by double clicking is in the OU tree we created. Then, in the white space in the right pane Right Click then hover over *New* option, just like creating an OU, but instead of selecting Organizational Unit, select *User*. This brings the **New Object - User** window up.
+1. Type in the first name and last name of the user. I recommend using your name, but it could be anyone you want.
+2. Now is the time to decide what you naming convention for users will be. I recommend using "first_last" and for admins use an "_a", but others put (first initial)(last). For me these would look like a_daniel_delavega or a_ddelavega. I went with the first one.
+3. Select @mydomain.com if it isn't already selected and Click Next
+4. Type in a secure password you can remember. For the check boxes, I recommend only checking *Password never expires* for this project, but each of them have uses in companies and it's inportant to understand your companies policies on using them. For most companies, you supply new hires with a first_time sign on password for users, then you would check *Users must change password at next logon*. Your company might have regulations for new users to prevent them from changing their passwords, however it is rare that companies will leave *Passwords never expire* checked. Click Next
+5. Review the options and select Finish. Your user is created
+
+#### Adding Admin Privileges
+Now that the user account is created, we now need to give that user full admin privileges. To do this, right click the user you just created and select *Properties*
+1. Select the *Member Of* tab and select *Add*.
+2. In the text field **Enter the object names to select* type "domain admins" and click *Check Names*. The name you typed in should become bold and underlined, meaning it found the group and added the user to the group. Click Okay to finish, then Click Okay to close the User Properties window.
+
+You can now sign out of the Administrator account and sign into the user you just created. To sign in under a different user, select *Other User* at the logon screen. Note that under the Username field is empty and under the password field it says **MYDOMAIN**. This means you don't need to input the domain name when entering the username, since it already knows where you're logging into. In the username field enter the logon name you gave the admin user you created. For me it was a_daniel_delavega and enter your password for the user. You should login and Server Manager should open.
 
 ## Deploying and Configuring RAS
 []() | []() | []() | []() | 
