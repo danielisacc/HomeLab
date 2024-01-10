@@ -4,7 +4,7 @@ This guide covers how to create an Active Directory (AD) within a Hyper-V VM to 
 - [Enabling Hyper-V Manager on <b>Windows 10 Pro</b>](#Preparing-Your-VM)
 - [Creating and Configuring a Windows 2019 Server Virtual Machine (VM)](#Creating-Your-VM)
 - [Deploying and Configuring an Active Directory (AD)](#Configuring-an-Active-Directory)
-- [Deploying and Configuring RAS/NAT onto the AD server](#Deploying-and-Configuring-RAS)
+- [Deploying and Configuring RAS/NAT onto the AD server](#Deploying-RAS)
 - [Deploying and Configuring DHCP onto the AD Server](#Deploying-and-Configuring-DHCP)
 - [Creating, troubleshooting, and running PowerShell script for User Creation](#PowerShell-Scripting)
 - [Deploying and connecting a <b>Windows 10 Education</b> VM to the VM Network](#Endpoint-Device-VM-Deployment)
@@ -194,8 +194,8 @@ Now that the user account is created, we now need to give that user full admin p
 
 You can now sign out of the Administrator account and sign into the user you just created. To sign in under a different user, select *Other User* at the logon screen. Note that under the Username field is empty and under the password field it says **MYDOMAIN**. This means you don't need to input the domain name when entering the username, since it already knows where you're logging into. In the username field enter the logon name you gave the admin user you created. For me it was a_daniel_delavega and enter your password for the user. You should login and Server Manager should open.
 
-## Deploying and Configuring RAS
-[Why Use RAS](#Why-Use-RAS) | [Deploying RAS](#Deploying-RAS) | [Post Deployment](#Post-Deployment)
+## Deploying RAS
+[Why Use RAS](#Why-Use-RAS) | [Deploying RAS](#Deploying-RAS) | [Configure NAT](#Configure-NAT)
 ### Why Use RAS
 So what is RAS/NAT and why use it? Well Remote Access Services (RAS) and Network Address Translation (NAT) are services we will use in this project so that the server can act as a gateway. At the moment our server is running as an AD and other computers on our server can connect to our server and send information within the network through the AD, but in order to access the internet, the server doesnt have the services necessary to transmit data, let alone allow it. By deploying RAS and NAT services, the server is able to send requests outside of the internal network for internet connection.
 
@@ -212,8 +212,29 @@ Now that we know why RAS should be installed, next comes the how. The process is
 
 ![](/images/image25.png)
 
+### Configure NAT
+Now that the role and it's services have been deployed you need to configure the NAT settings. To do this, open the **Tools** in the tool bar of the Server Manager and scroll down to select *Routing and Remote Access*. This opens the **Routing and Remote Access** window.
+1. Right click your server name "DC1 (local)" for me from within the Routing and Remote Access tree, Then select *Configure and Enable Routing and Remote Access*. This opens the **Routing and Remote Access Server Setup Wizard**
+2. Welcome - Click Next
+3. Configuration - Select the *Network address translation (NAT)* radial, then Click Next
+4. **DON'T CLICK NEXT**. On this screen, it will display **Use this public interface to connect to the internet** greyed out with nothing displayed in the table below. We need to select this option, but we can't. In order to bypass this, we need to restart the process with clicking *Cancel*, then closing the **Routing and Remote Access** window. This may seem counter intuitive, but it does work every time. Restart the steps, then return to the next step.
+5. NAT Internet Connection - Now that you have restarted the steps, you should be able to select *Use this public interface to connect*. Do so, then select the *External* connection. The Image below depicts what the screen should look like after the program was restarted. Click Next
+6. Click Finish and wait for the clock. Close the wizard.
+7. The network tree for "DC1 (local)" should be available, meaning it's configured properly.
+
+![](/images/image73.png)
+
 ## Deploying and Configuring DHCP
-[]() | []() | []() | []() | 
+[Why DHCP](#Why-DHCP) | [Deployment](#Deploying-DHCP) | [Configuring DHCP and Scope](#Configuring-DHCP-and-Scope)
+### Why DHCP
+
+
+### Deploying DHCP
+
+
+### Configuring DHCP and Scope
+
+
 
 ## PowerShell Scripting
 
