@@ -195,7 +195,22 @@ Now that the user account is created, we now need to give that user full admin p
 You can now sign out of the Administrator account and sign into the user you just created. To sign in under a different user, select *Other User* at the logon screen. Note that under the Username field is empty and under the password field it says **MYDOMAIN**. This means you don't need to input the domain name when entering the username, since it already knows where you're logging into. In the username field enter the logon name you gave the admin user you created. For me it was a_daniel_delavega and enter your password for the user. You should login and Server Manager should open.
 
 ## Deploying and Configuring RAS
-[]() | []() | []() | []() | 
+[Why Use RAS](#Why-Use-RAS) | [Deploying RAS](#Deploying-RAS) | [Post Deployment](#Post-Deployment)
+### Why Use RAS
+So what is RAS/NAT and why use it? Well Remote Access Services (RAS) and Network Address Translation (NAT) are services we will use in this project so that the server can act as a gateway. At the moment our server is running as an AD and other computers on our server can connect to our server and send information within the network through the AD, but in order to access the internet, the server doesnt have the services necessary to transmit data, let alone allow it. By deploying RAS and NAT services, the server is able to send requests outside of the internal network for internet connection.
+
+### Deploying RAS
+Now that we know why RAS should be installed, next comes the how. The process is very similar to deploying the AD services. Just like before, select *Add roles and features* from the **Configure this local server**. This opens the **Add Roles and Features Wizard**.
+1. Installation Type - Click Next
+2. Server Selection - Click Next
+3. Server Roles - Scroll down and select *Remote Access** from the list of roles. When you click this the **Add Features** pop up window appears. Select *Add Features*, then Click Next
+4. Features - Click Next
+5. Role Services - Select *Routing*. After selecting this, *DirectAccess and VPN (RAS)* automattically becomes selected, Click Next
+6. Web Server Role - Click Next
+7. Role Services - There are no additional services we need to install, so Click Next
+8. Confirmation - Ensure your configuration matches the Image below, then Click Install
+
+![](/images/image25.png)
 
 ## Deploying and Configuring DHCP
 []() | []() | []() | []() | 
