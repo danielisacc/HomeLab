@@ -176,6 +176,7 @@ To create an OU is simple, since it has similar directions as creating a folder 
 4. Type in the name for the OU and Click done. Keep in mind that the check box under the name will prevent you from deleting this OU without advanced features on.
 
 The specific OU tree design follows a standard, so that other who create OU's know how to name them and place them. First, you need to create an OU with the name of your domain within you domain. Although this is not necessary, it is the standard for most companies and allows admins to have more control over the OU's. Create OU's with the design below. We will add more OU's to this later in the project, but this is all we need for now.
+
 ![](/images/image67.png)
 
 #### User Creation
