@@ -9,7 +9,7 @@ This guide covers how to create an Active Directory (AD) within a Hyper-V VM to 
 - [Creating, troubleshooting, and running PowerShell script for User Creation](#PowerShell-Scripting)
 - [Deploying and connecting a <b>Windows 10 Education</b> VM to the VM Network](#Endpoint-Device-VM-Deployment)
 ### What is Active Directory
-Active Directory(AD), often called Active Directory Domain Services(AD DS) can be a rather broad topic due to the flexibility of the services it provides. At it's core an AD stores data objects. This is means it doesn't just store files like a file system does, instead storing "Objects" within it's structure. These objects include Users, Computers, Groups and Group Policies. In other words an AD is where information and rules regaurding Users and the Devices within a Network are stored, managed, and enforced. This is a simplified explanation of AD since the "Domain Services" of AD DC includes much more than storing data as the Server that runs AD often times has more responsibilies outside of storing objects. This includes RAS/NAT which is a service that allows users within the AD's internal Network to connect to the greater internet, while the DHCP service allows the AD to act as a network "Gateway" similar to a router, assigning IP addresses to users within the network. With both of these services deployed on an AD the users within the internal network are never connected to the external internet, instead using the AD as a barrier. This is how Organizations use AD and is why I set mine up this way as well.
+Active Directory(AD), often called Active Directory Domain Services(AD DS) can be a rather broad topic due to the flexibility of the services it provides. At it's core an AD stores data objects. This is means it doesn't just store files like a file system does, instead storing "Objects" within it's structure. These objects include Users, Computers, Groups and Group Policies. In other words an AD is where information and rules regaurding Users and the Devices within a Network are stored, managed, and enforced. This is a simplified explanation of AD since the "Domain Services" of AD DS includes much more than storing data as the Server that runs AD often times has more responsibilies outside of storing objects. This includes RAS/NAT which is a service that allows users within the AD's internal Network to connect to the greater internet, while the DHCP service allows the AD to act as a network "Gateway" similar to a router, assigning IP addresses to users within the network. Keep in mind this is a Project, not an actual organization's network. A company would never keep their AD as a Gateway, since it leaves it vulnerable to attack, but we will explore the process to understand the Deployment process for these services.
 ## Preparing Your VM
 [What is a VM](#What-is-a-VM) | [Why HyperV](#Why-HyperV) | [Enable HyperV Manager](#Enable-HyperV-Manager) | [Installing Windows ISOs](#Installing-Windows-ISOs) | [Windows Liscenses](#Windows-Liscenses)
 ### What is a VM
@@ -227,13 +227,32 @@ Now that the role and it's services have been deployed you need to configure the
 ## Deploying and Configuring DHCP
 [Why DHCP](#Why-DHCP) | [Deployment](#Deploying-DHCP) | [Configuring DHCP and Scope](#Configuring-DHCP-and-Scope)
 ### Why DHCP
-
+Dynamic Host Configuration Protocol (DHCP) works with the RAS/NAT we configured to connect users to the iternet. If the internet is a wedding venue, then that means that NAT is the door to that venue, RAS is the person who holds the door open, and DHCP is the person handing each person who walks in their seat number. In the internet RAS is a gateway that we opened, allowing users to exit the internal network, but DHCP is what assigns IP addresses to those devices, so that the internet can recognize their data packets. All internet gateways have DHCP, since that is the role of a router...to route traffic. So without DHCP RAS/NAT is useless, since devices can't connect to the internet without it.
 
 ### Deploying DHCP
-
+DHCP is another role, so to deploy it we can follow the same steps as before. First select *Add Roles and Features* from **Configure this local server**. This opens the **Add Roles and Features Wizard**.
+1. Installation Type - Role based, Click Next
+2. Server Selection - "DC1", Click Next
+3. Server Roles - Select the *DHCP Server* check box, then select *Add Features* on the pop-up window
+4. Click Next through the remaining wizard tabs, then Install. DHCP is now deployed!
 
 ### Configuring DHCP and Scope
+#### What is Scope?
+Now that DHCP is deployed, we need to configure it and add a scope to our DHCP. What is a scope? Returning to the wedding venue analogy, the DHCP is the person who hands out seat assignments, but how are the seats assigned? Is it random? Of course not, that would be a terrible wedding. What if the grooms mom who hates the brides dad are forced to sit next to each other? What if there aren't enough seats? Well a scope works as a solution to this. What if instead of randomly assigning seats to guests there are rules in place that regulate where people sit. What if the bride's family sit at a certain table and the groom's family sits at another. It's still a little random, but the random is regulated with rules. A scope is a range of IP addresses that DHCP can assign devices on a network. DHCP regulates what scope a device falls into and how long that device can hold onto the IP address or "Lease" of the IP real estate. This is what we need to configure, so that DHCP knows how to hand out IP addresses. 
+#### Establishing Scope
+To set up DHCP, the first step is to go to **Tools** and select *DHCP* from the drop down menu. This opens the **DHCP** window. You will see that IPv4 and IPv6 in the network tree have a red down arrow, indicating that these services are not running. Right click on IPv4 and select *New Scope*. This opens the **New Scope Wizard**.
+1. Scope Name - I am naming the scope off of the scope range, so it will be named "172.16.0.100-200". Click Next
+2. IP Address Range - Start IP address is going to be *172.1.0.100*, End IP address is going to be *172.16.0.200*, the length of the subnet mask is going to be set to *24*, and the subnet mask is *255.255.255.0*. Click Next once input.
+3. Lease Duration - This is how long a device is assigned an IP address. This length varies based off of buisness needs, but since this is a homelab, I kept the selection at 8 days. Click Next
+4. Configure DHCP Options - select *Yes, I want to configure these options now*, then Click Next
+5. Router (Default Gateway) - Since in this project our DC is the default gateway, input the server's IP address (172.16.0.1) in the **IP address** field, then click *Add* and Click Next
+6. Domain Name and DNS Servers - Keep the parent domain as the default "mydomain.com", then Click Next.
+7. WSL - This is an old service that is not used anymore, so I will skip past it. Click Next
+8. Activate Scope - Select *Yes, I want to activate this scope now*, then Click Next. This finishes the set up and the wizard closes.
+9. Back on the **DHCP** window, you may notice that the IPv4 and IPv6 are still indicating as down. This is because you need to refresh the system. To do this, right click on "dc1.mydomain.com" and select *Authorize*.
+10. Then Right click it again and select *Refresh*. The IPv4 and IPv6 tree should indicate green up arrows.
 
+The DC is fully functioning now with Active Directory and is also acting as the Default Gateway. Now since this is a HomeLab it is just fine to have this one server acting as both, but in a real company, this would be an unnecessary headache as the DC acting as a Gateway and an AD would cause many issues for the AD. This is also makes our network very vulnerable to threats, since the central controller of our network is also the first thing interacting with the internet. A simple DoS attack could drop our entire network. I wanted practice working with Active Directory, but I also wanted practice with DHCP and RAS/NAT services.
 
 
 ## PowerShell Scripting
